@@ -36,9 +36,9 @@
         </property>
         <property name="annotatedClasses">
             <list>
-                <value>com.hundsun.wallet.entity.TTransferInfoEntity</value>
-                <value>com.hundsun.wallet.entity.TUserEntity</value>
-                <value>com.hundsun.wallet.entity.TWalletEntity</value>
+                <value>com.hundsun.wallet.entity.TransferInfoEntity</value>
+                <value>com.hundsun.wallet.entity.UserEntity</value>
+                <value>com.hundsun.wallet.entity.WalletEntity</value>
             </list>
         </property>
     </bean>

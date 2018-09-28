@@ -3,14 +3,13 @@ package com.hundsun.wallet.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "T_USER", schema = "WALLET")
-public class TUserEntity {
+@Table(name = "T_WALLET", schema = "WALLET")
+public class WalletEntity {
     private long id;
-    private String username;
-    private String password;
-    private long walletid;
+    private long balance;
     private String flag;
-    private String createdate;
+    private long ownerId;
+    private String ownerName;
     private String reserve1;
     private String reserve2;
     private String reserve3;
@@ -28,33 +27,13 @@ public class TUserEntity {
     }
 
     @Basic
-    @Column(name = "USERNAME")
-    public String getUsername() {
-        return username;
+    @Column(name = "BALANCE")
+    public long getBalance() {
+        return balance;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Basic
-    @Column(name = "PASSWORD")
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Basic
-    @Column(name = "WALLETID")
-    public long getWalletid() {
-        return walletid;
-    }
-
-    public void setWalletid(long walletid) {
-        this.walletid = walletid;
+    public void setBalance(long balance) {
+        this.balance = balance;
     }
 
     @Basic
@@ -68,13 +47,23 @@ public class TUserEntity {
     }
 
     @Basic
-    @Column(name = "CREATEDATE")
-    public String getCreatedate() {
-        return createdate;
+    @Column(name = "OWNER_ID")
+    public long getOwnerId() {
+        return ownerId;
     }
 
-    public void setCreatedate(String createdate) {
-        this.createdate = createdate;
+    public void setOwnerId(long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    @Basic
+    @Column(name = "OWNER_NAME")
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 
     @Basic
@@ -132,14 +121,13 @@ public class TUserEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TUserEntity that = (TUserEntity) o;
+        WalletEntity that = (WalletEntity) o;
 
         if (id != that.id) return false;
-        if (walletid != that.walletid) return false;
-        if (username != null ? !username.equals(that.username) : that.username != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
+        if (balance != that.balance) return false;
+        if (ownerId != that.ownerId) return false;
         if (flag != null ? !flag.equals(that.flag) : that.flag != null) return false;
-        if (createdate != null ? !createdate.equals(that.createdate) : that.createdate != null) return false;
+        if (ownerName != null ? !ownerName.equals(that.ownerName) : that.ownerName != null) return false;
         if (reserve1 != null ? !reserve1.equals(that.reserve1) : that.reserve1 != null) return false;
         if (reserve2 != null ? !reserve2.equals(that.reserve2) : that.reserve2 != null) return false;
         if (reserve3 != null ? !reserve3.equals(that.reserve3) : that.reserve3 != null) return false;
@@ -152,11 +140,10 @@ public class TUserEntity {
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (username != null ? username.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (int) (walletid ^ (walletid >>> 32));
+        result = 31 * result + (int) (balance ^ (balance >>> 32));
         result = 31 * result + (flag != null ? flag.hashCode() : 0);
-        result = 31 * result + (createdate != null ? createdate.hashCode() : 0);
+        result = 31 * result + (int) (ownerId ^ (ownerId >>> 32));
+        result = 31 * result + (ownerName != null ? ownerName.hashCode() : 0);
         result = 31 * result + (reserve1 != null ? reserve1.hashCode() : 0);
         result = 31 * result + (reserve2 != null ? reserve2.hashCode() : 0);
         result = 31 * result + (reserve3 != null ? reserve3.hashCode() : 0);
