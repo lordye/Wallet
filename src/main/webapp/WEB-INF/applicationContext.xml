@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!-- 引入property配置文件 -->
+    <context:property-placeholder location="classpath:application_wallet.properties" />
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${jdbc_driver}"/>
+        <property name="url" value="${jdbc_url}"/>
+        <property name="username" value="${jdbc_username}"/>
+        <property name="password" value="${jdbc_password}"/>
+        <property name="maxActive" value="${jdbc_maxActive}"/>
+        <property name="maxWait" value="${jdbc_maxWait}"/>
+    </bean>
+
+    <bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" id="sessionFactory">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</prop>
+                <prop key="show_sql">true</prop>
+                <prop key="format_sql">true</prop>
+                <prop key="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:orcl</prop>
+                <prop key="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</prop>
+            </props>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.hundsun.wallet.entity.TTransferInfoEntity</value>
+                <value>com.hundsun.wallet.entity.TUserEntity</value>
+                <value>com.hundsun.wallet.entity.TWalletEntity</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--<bean id="userInfoDao" class="com.yedy.dao.UserInfoDaoImpl">-->
+        <!--<property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="userInfoService" class="com.yedy.service.UserInfoServiceImpl">-->
+        <!--<property name="userInfoDao" ref="userInfoDao"></property>-->
+    <!--</bean>-->
+
+
+    <!--<bean id="tMoneyDao" class="com.yedy.dao.TMoneyDaoImpl">-->
+        <!--<property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="tMoneyService" class="com.yedy.service.TMoneyServiceImpl">-->
+        <!--<property name="tMoneyDao" ref="tMoneyDao"></property>-->
+    <!--</bean>-->
+
+
+    <!--<bean id="tTransDao" class="com.yedy.dao.TTransDaoImpl">-->
+        <!--<property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="tTransService" class="com.yedy.service.TTransServiceImpl">-->
+        <!--<property name="transDao" ref="tTransDao"></property>-->
+    <!--</bean>-->
+
+    <bean class="org.springframework.orm.hibernate5.HibernateTransactionManager" id="transactionManager">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+</beans>
