@@ -25,12 +25,10 @@
         #main_2 {
             width: 100%;
             height: 80%;
-            border: 1px solid red;
             background: #DDB263 repeat-x;
         }
         #middle_main{
             position: absolute;
-            border:2px solid black;
             top: 0px;
             left: 0;
             right: 0;
@@ -41,19 +39,17 @@
         #middle_1{
             height: 20%;
             width: 100%;
-            border: 1px solid green;
         }
         #middle_2{
             height: 80%;
             width: 100%;
-            border: 1px solid yellow;
+            border: 1px solid #DDB263;
             background: url("<c:url value="/images/8.jpg" />");
             background-size: 100% 100%;
         }
         #login_input{
             width: 60%;
             height: 60%;
-            border: 1px solid red;
             margin: 80px 0px 0px 50px;
         }
         .input_style{
@@ -81,12 +77,12 @@
         </div>
         <div id="middle_2">
             <div id="login_input">
-                <div style="text-align: center; margin:50px 250px 50px 0px">
+                <div style="text-align: center; margin:20px 250px 20px 0px">
                     <h1>欢迎登录</h1>
                 </div>
 
-                <form class="form-horizontal">
-                    <div class="form-group" style="margin-bottom: 20px; height: 80px">
+                <form class="form-horizontal" action="/login" method="post">
+                    <div class="form-group" style="margin-bottom: 20px; height: 60px">
                         <label for="exampleInputEmail3" class="col-sm-2 control-label">用户名：</label>
                         <div class="col-sm-10" style="width: 350px">
                             <input style="width: 300px; height: 40px;" type="email" class="form-control" id="exampleInputEmail3" placeholder="用户名">
@@ -105,18 +101,21 @@
                         <div class="input_style alert alert-danger" role="alert">用户名错误</div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10" style="border: 1px solid red; width: 315px">
+                        <div class="col-sm-offset-2 col-sm-10" style=" width: 315px">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox">记住我
                                 </label>
-                                <a>忘记密码</a>
+                                <a style="float:right">忘记密码?</a>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default" style="width: 300px">登录</button>
+                            <button type="submit" class="btn btn-default" style="width: 300px;margin-bottom: 20px;">登录</button>
+                        </div>
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default" style="width: 300px">注册</button>
                         </div>
                     </div>
                 </form>
