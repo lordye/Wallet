@@ -22,4 +22,8 @@ public class RootController {
     public String login(TUserEntity login, Model model){
         return "main";
     }
+    @RequestMapping(value = "/register")
+    public String register(Model model){
+        return "register";
+    }
 }

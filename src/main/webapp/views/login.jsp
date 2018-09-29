@@ -17,6 +17,7 @@
     <title>登录页面</title>
     <!-- Bootstrap -->
     <link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet">
+    <script src="<c:url value="/js/jquery-3.3.1.min.js" />"></script>
     <style type="text/css">
         #top_1{
             background-color: black;
@@ -58,8 +59,17 @@
             height:40px;
             display: none
         }
-
     </style>
+    <script>
+        function register() {
+            $("#login_form").attr("action","/register");
+            $("#login_form").submit();
+        }
+        function login() {
+            $("#login_form").attr("action","/login");
+            $("#login_form").submit();
+        }
+    </script>
 </head>
 <body>
 <div style="position: relative">
@@ -81,7 +91,7 @@
                     <h1>欢迎登录</h1>
                 </div>
 
-                <form class="form-horizontal" action="/login" method="post">
+                <form id="login_form" class="form-horizontal" action="" method="post">
                     <div class="form-group" style="margin-bottom: 20px; height: 60px">
                         <label for="exampleInputEmail3" class="col-sm-2 control-label">用户名：</label>
                         <div class="col-sm-10" style="width: 350px">
@@ -112,10 +122,10 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default" style="width: 300px;margin-bottom: 20px;">登录</button>
+                            <button type="submit" class="btn btn-default" style="width: 300px;margin-bottom: 20px;" onclick="login()">登录</button>
                         </div>
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default" style="width: 300px">注册</button>
+                            <button type="submit" class="btn btn-default" style="width: 300px" onclick="register()">注册</button>
                         </div>
                     </div>
                 </form>
