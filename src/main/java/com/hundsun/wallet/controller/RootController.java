@@ -1,26 +1,38 @@
 package com.hundsun.wallet.controller;
 
-import com.hundsun.wallet.entity.TUserEntity;
+import com.hundsun.wallet.entity.UserEntity;
+import com.hundsun.wallet.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 @Controller
 @RequestMapping("")
 public class RootController {
 
-//    @Autowired
-//    private UserService userService;
+    @Resource
+    private UserService userService;
 
-    //自动跳转
     @RequestMapping("")
     public String index(){
         return "login";
     }
 
     @RequestMapping(value = "/login")
-    public String login(TUserEntity login, Model model){
-        return "main";
+    public String login(UserEntity user, Model model){
+        boolean success = false;
+        if (user != null ){
+            success = this.userService.login(user);
+        }
+        if (success){
+            model.addAttribute("user",user);
+            return "main";
+        }else {
+            model.addAttribute("errorMessage","账号或密码错误！");
+            return "login";
+        }
     }
     @RequestMapping(value = "/register")
     public String register(Model model){

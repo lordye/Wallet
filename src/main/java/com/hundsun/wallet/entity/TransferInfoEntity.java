@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "T_TRANSFER_INFO", schema = "WALLET")
-public class TTransferInfoEntity {
+public class TransferInfoEntity {
     private long id;
     private String type;
     private long fromId;
@@ -22,7 +22,9 @@ public class TTransferInfoEntity {
     private String reserve5;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false, precision = 0)
+    @SequenceGenerator(name = "trans_id", sequenceName = "t_transfer_info_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "trans_id")
     public long getId() {
         return id;
     }
@@ -176,7 +178,7 @@ public class TTransferInfoEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TTransferInfoEntity that = (TTransferInfoEntity) o;
+        TransferInfoEntity that = (TransferInfoEntity) o;
 
         if (id != that.id) return false;
         if (fromId != that.fromId) return false;

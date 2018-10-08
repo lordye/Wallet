@@ -95,7 +95,7 @@
                     <div class="form-group" style="margin-bottom: 20px; height: 60px">
                         <label for="exampleInputEmail3" class="col-sm-2 control-label">用户名：</label>
                         <div class="col-sm-10" style="width: 350px">
-                            <input style="width: 300px; height: 40px;" type="email" class="form-control" id="exampleInputEmail3" placeholder="用户名">
+                            <input style="width: 300px; height: 40px;" name="username" type="email" class="form-control" id="exampleInputEmail3" placeholder="用户名">
                         </div>
                         <div class="input_style alert alert-info" role="alert">正确</div>
                         <div class="input_style alert alert-success" role="alert">正确</div>
@@ -104,7 +104,7 @@
                     <div class="form-group">
                         <label for="exampleInputPassword3" class="col-sm-2 control-label">密码：</label>
                         <div class="col-sm-10"  style="width: 350px">
-                            <input style="width: 300px; height: 40px;" type="password" class="form-control" id="exampleInputPassword3" placeholder="密码">
+                            <input style="width: 300px; height: 40px;" name="password" type="password" class="form-control" id="exampleInputPassword3" placeholder="密码">
                         </div>
                         <div class="input_style alert alert-info" role="alert">正确</div>
                         <div class="input_style alert alert-success" role="alert">正确</div>

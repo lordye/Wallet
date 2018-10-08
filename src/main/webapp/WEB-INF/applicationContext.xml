@@ -36,40 +36,22 @@
         </property>
         <property name="annotatedClasses">
             <list>
-                <value>com.hundsun.wallet.entity.TTransferInfoEntity</value>
-                <value>com.hundsun.wallet.entity.TUserEntity</value>
-                <value>com.hundsun.wallet.entity.TWalletEntity</value>
+                <value>com.hundsun.wallet.entity.TransferInfoEntity</value>
+                <value>com.hundsun.wallet.entity.UserEntity</value>
+                <value>com.hundsun.wallet.entity.WalletEntity</value>
             </list>
         </property>
     </bean>
 
-    <!--<bean id="userInfoDao" class="com.yedy.dao.UserInfoDaoImpl">-->
-        <!--<property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>-->
-    <!--</bean>-->
+    <bean id="userDao" class="com.hundsun.wallet.dao.UserDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
 
-    <!--<bean id="userInfoService" class="com.yedy.service.UserInfoServiceImpl">-->
-        <!--<property name="userInfoDao" ref="userInfoDao"></property>-->
-    <!--</bean>-->
+    <bean id="userService" class="com.hundsun.wallet.service.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
 
-
-    <!--<bean id="tMoneyDao" class="com.yedy.dao.TMoneyDaoImpl">-->
-        <!--<property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>-->
-    <!--</bean>-->
-
-    <!--<bean id="tMoneyService" class="com.yedy.service.TMoneyServiceImpl">-->
-        <!--<property name="tMoneyDao" ref="tMoneyDao"></property>-->
-    <!--</bean>-->
-
-
-    <!--<bean id="tTransDao" class="com.yedy.dao.TTransDaoImpl">-->
-        <!--<property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>-->
-    <!--</bean>-->
-
-    <!--<bean id="tTransService" class="com.yedy.service.TTransServiceImpl">-->
-        <!--<property name="transDao" ref="tTransDao"></property>-->
-    <!--</bean>-->
-
-    <bean class="org.springframework.orm.hibernate5.HibernateTransactionManager" id="transactionManager">
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="dataSource" ref="dataSource"/>
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
