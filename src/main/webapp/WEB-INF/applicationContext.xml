@@ -39,6 +39,8 @@
                 <value>com.hundsun.wallet.entity.TransferInfoEntity</value>
                 <value>com.hundsun.wallet.entity.UserEntity</value>
                 <value>com.hundsun.wallet.entity.WalletEntity</value>
+                <value>com.hundsun.wallet.entity.UserInfoEntity</value>
+                <value>com.hundsun.wallet.entity.DeleteUserEntity</value>
             </list>
         </property>
     </bean>
@@ -47,8 +49,18 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
+    <bean id="userInfoDao" class="com.hundsun.wallet.dao.UserInfoDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="walletDao" class="com.hundsun.wallet.dao.WalletDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
     <bean id="userService" class="com.hundsun.wallet.service.UserServiceImpl">
         <property name="userDao" ref="userDao"/>
+        <property name="userInfoDao" ref="userInfoDao"/>
+        <property name="walletDao" ref="walletDao"/>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">

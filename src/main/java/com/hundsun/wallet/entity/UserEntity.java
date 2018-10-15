@@ -16,6 +16,7 @@ public class UserEntity {
     private String reserve4;
     private String reserve5;
     private WalletEntity walletEntity;
+    private UserInfoEntity userInfoEntity;
 
     @Id
     @Column(name = "ID", nullable = false, precision = 0)
@@ -49,6 +50,16 @@ public class UserEntity {
         this.password = password;
     }
 
+    @OneToOne
+    @JoinColumn(name = "WALLET_ID", unique = true)
+    public WalletEntity getWalletEntity() {
+        return walletEntity;
+    }
+
+    public void setWalletEntity(WalletEntity walletEntity) {
+        this.walletEntity = walletEntity;
+    }
+
     @Basic
     @Column(name = "FLAG")
     public String getFlag() {
@@ -67,6 +78,16 @@ public class UserEntity {
 
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "INFO_ID", unique = true)
+    public UserInfoEntity getUserInfoEntity() {
+        return userInfoEntity;
+    }
+
+    public void setUserInfoEntity(UserInfoEntity userInfoEntity) {
+        this.userInfoEntity = userInfoEntity;
     }
 
     @Basic
@@ -119,16 +140,6 @@ public class UserEntity {
         this.reserve5 = reserve5;
     }
 
-    @OneToOne
-    @JoinColumn(name = "WALLET_ID", unique = true)
-    public WalletEntity getWalletEntity() {
-        return walletEntity;
-    }
-
-    public void setWalletEntity(WalletEntity walletEntity) {
-        this.walletEntity = walletEntity;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -144,8 +155,6 @@ public class UserEntity {
         if (reserve1 != null ? !reserve1.equals(that.reserve1) : that.reserve1 != null) return false;
         if (reserve2 != null ? !reserve2.equals(that.reserve2) : that.reserve2 != null) return false;
         if (reserve3 != null ? !reserve3.equals(that.reserve3) : that.reserve3 != null) return false;
-        if (reserve4 != null ? !reserve4.equals(that.reserve4) : that.reserve4 != null) return false;
-        if (reserve5 != null ? !reserve5.equals(that.reserve5) : that.reserve5 != null) return false;
 
         return true;
     }
@@ -160,8 +169,6 @@ public class UserEntity {
         result = 31 * result + (reserve1 != null ? reserve1.hashCode() : 0);
         result = 31 * result + (reserve2 != null ? reserve2.hashCode() : 0);
         result = 31 * result + (reserve3 != null ? reserve3.hashCode() : 0);
-        result = 31 * result + (reserve4 != null ? reserve4.hashCode() : 0);
-        result = 31 * result + (reserve5 != null ? reserve5.hashCode() : 0);
         return result;
     }
 }

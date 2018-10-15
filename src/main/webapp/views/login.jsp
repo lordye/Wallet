@@ -18,6 +18,7 @@
     <!-- Bootstrap -->
     <link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet">
     <script src="<c:url value="/js/jquery-3.3.1.min.js" />"></script>
+    <script src="<c:url value="/js/md5.js" />"></script>
     <style type="text/css">
         #top_1{
             background-color: black;
@@ -66,6 +67,8 @@
             $("#login_form").submit();
         }
         function login() {
+            $("#exampleInputPassword3").val(hex_md5($("#exampleInputPassword3").val()));
+            alert($("#exampleInputPassword3").val());
             $("#login_form").attr("action","/login");
             $("#login_form").submit();
         }
@@ -93,9 +96,9 @@
 
                 <form id="login_form" class="form-horizontal" action="" method="post">
                     <div class="form-group" style="margin-bottom: 20px; height: 60px">
-                        <label for="exampleInputEmail3" class="col-sm-2 control-label">用户名：</label>
+                        <label class="col-sm-2 control-label">用户名：</label>
                         <div class="col-sm-10" style="width: 350px">
-                            <input style="width: 300px; height: 40px;" name="username" type="email" class="form-control" id="exampleInputEmail3" placeholder="用户名">
+                            <input style="width: 300px; height: 40px;" name="username" type="text" class="form-control" placeholder="用户名">
                         </div>
                         <div class="input_style alert alert-info" role="alert">正确</div>
                         <div class="input_style alert alert-success" role="alert">正确</div>

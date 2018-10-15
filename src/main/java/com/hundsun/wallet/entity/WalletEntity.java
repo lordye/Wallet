@@ -8,7 +8,6 @@ public class WalletEntity {
     private long id;
     private long balance;
     private String flag;
-    private long ownerId;
     private String ownerName;
     private String reserve1;
     private String reserve2;
@@ -46,16 +45,6 @@ public class WalletEntity {
 
     public void setFlag(String flag) {
         this.flag = flag;
-    }
-
-    @Basic
-    @Column(name = "OWNER_ID")
-    public long getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(long ownerId) {
-        this.ownerId = ownerId;
     }
 
     @Basic
@@ -127,7 +116,6 @@ public class WalletEntity {
 
         if (id != that.id) return false;
         if (balance != that.balance) return false;
-        if (ownerId != that.ownerId) return false;
         if (flag != null ? !flag.equals(that.flag) : that.flag != null) return false;
         if (ownerName != null ? !ownerName.equals(that.ownerName) : that.ownerName != null) return false;
         if (reserve1 != null ? !reserve1.equals(that.reserve1) : that.reserve1 != null) return false;
@@ -144,7 +132,6 @@ public class WalletEntity {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (int) (balance ^ (balance >>> 32));
         result = 31 * result + (flag != null ? flag.hashCode() : 0);
-        result = 31 * result + (int) (ownerId ^ (ownerId >>> 32));
         result = 31 * result + (ownerName != null ? ownerName.hashCode() : 0);
         result = 31 * result + (reserve1 != null ? reserve1.hashCode() : 0);
         result = 31 * result + (reserve2 != null ? reserve2.hashCode() : 0);

@@ -23,8 +23,8 @@ public class TransferInfoEntity {
 
     @Id
     @Column(name = "ID", nullable = false, precision = 0)
-    @SequenceGenerator(name = "trans_id", sequenceName = "t_transfer_info_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "trans_id")
+    @SequenceGenerator(name = "transfer_id", sequenceName = "t_transfer_info_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transfer_id")
     public long getId() {
         return id;
     }

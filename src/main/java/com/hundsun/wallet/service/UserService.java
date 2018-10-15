@@ -1,6 +1,8 @@
 package com.hundsun.wallet.service;
 
 import com.hundsun.wallet.entity.UserEntity;
+import com.hundsun.wallet.entity.UserInfoEntity;
+import com.hundsun.wallet.entity.WalletEntity;
 
 public interface UserService {
 
@@ -8,7 +10,7 @@ public interface UserService {
      * 用户注册
      * @param userEntity
      */
-    void register(UserEntity userEntity);
+    boolean register(UserEntity userEntity, WalletEntity walletEntity, UserInfoEntity userInfoEntity);
 
     /**
      * 用户登录
